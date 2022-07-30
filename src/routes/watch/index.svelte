@@ -3,10 +3,10 @@
     {#key video_data.videoId}        
     <video class="videoplayer" controls>
         <!-- HAXXXX for fallbacks and non-js users -->
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&amp;itag=22`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&amp;itag=22&amp;local=true`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&amp;itag=18`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&amp;itag=18&amp;local=true`} >
+        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=22`} >
+        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=22&local=true`} >
+        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=18`} >
+        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=18&local=true`} >
         <track kind="captions">
     </video>
     {/key}
