@@ -1,10 +1,9 @@
-<input type="text" bind:value={query}>
-
-<a style="display: block;" href={`/results?search_query=${query}`}>
-<button>
-    SEARCH
-</button>
-</a>
+<form action="/results" method="get">
+    <label>SEARCH
+        <input type="text" id="fname" name="search_query"><br><br>
+    </label>
+    <input type="submit" value="Submit">
+</form>
 
 <script lang="ts">
 let query:string;
