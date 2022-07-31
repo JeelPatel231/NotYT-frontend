@@ -5,9 +5,8 @@
 </div>
 
 <script context="module">
-const ssr = false
 export const load = async ({ fetch, url }) => {
-    const res = await fetch(`/proxy/${get(API_ENDPOINT)}/api/v1/search${url.search}`);
+    const res = await fetch(`${get(FINAL_HOST)}/api/v1/search${url.search}`);
     const data = await res.json();
     if(res.ok){
         return{
@@ -25,7 +24,7 @@ export const load = async ({ fetch, url }) => {
 </script>
 
 <script lang="ts">
-import { API_ENDPOINT } from "../../store/store"
+import { FINAL_HOST } from "../../store/store"
 import { get } from "svelte/store";
 import type { TypeSearchedChannel, TypeSearchedPlaylist, TypeSearchedVideo } from "src/interfaces/Search";
 import SearchResults from "../../components/SearchResults.svelte"

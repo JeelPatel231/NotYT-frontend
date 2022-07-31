@@ -1,15 +1,20 @@
+<!-- re-render everything on ID change -->
+{#key video_data.videoId}        
 <div class="grid-container">
-    <!-- re-render video tag on ID change -->
-    {#key video_data.videoId}        
     <video class="videoplayer" controls>
-        <!-- HAXXXX for fallbacks and non-js users -->
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=22`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=22&local=true`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=18`} >
-        <source src={`/proxy/${$API_ENDPOINT}/latest_version?id=${video_data.videoId}&itag=18&local=true`} >
+
+        <!-- merged video and audio streams -->
+        {#each video_data.formatStreams as streams}
+            <source src={streams.url} type={streams.type} label={streams.qualityLabel} >
+        {/each}
+
+        <!-- proxy fallbacks -->
+        <source src={`${$FINAL_HOST}/latest_version?id=${video_data.videoId}&itag=22&local=true`} >
+        <source src={`${$FINAL_HOST}/latest_version?id=${video_data.videoId}&itag=18&local=true`} >
+
+        <!-- track here just for "good practices" and svelte warning -->
         <track kind="captions">
     </video>
-    {/key}
 
     <div class="description text-body2">
             <div class="mt-16 text-headline6">
@@ -59,6 +64,7 @@
     </div>
     {/if}
 </div>
+{/key}
 
 <style>
 .grid-container {
@@ -71,7 +77,7 @@
         "videoplayer related" min-content
         "description related" min-content
         "comments related" max-content/
-        minmax(640px,auto) minmax(300px,400px);
+        auto minmax(300px,400px);
 }
 @media only screen and (max-width: 1034px) {
     .grid-container {
@@ -86,6 +92,8 @@
 .videoplayer {
     width: 100%;
     grid-area: videoplayer;
+    /* for sqaure videos which overflow */
+    max-height: 800px;
 }
 
 .mt-16{
@@ -168,8 +176,8 @@
 <script context="module">
 export const load = async ({ fetch, url }) => {
     const videoId = url.searchParams.get('v')
-    const video_res = await fetch(`/proxy/${get(API_ENDPOINT)}/api/v1/videos/${videoId}`);
-    const comments_res = await fetch(`/proxy/${get(API_ENDPOINT)}/api/v1/comments/${videoId}`);
+    const video_res = await fetch(`${get(FINAL_HOST)}/api/v1/videos/${videoId}`);
+    const comments_res = await fetch(`${get(FINAL_HOST)}/api/v1/comments/${videoId}`);
 
     const video_data = await video_res.json();
     const comments_data = await comments_res.json();
@@ -186,7 +194,7 @@ export const load = async ({ fetch, url }) => {
 </script>
 
 <script lang="ts">
-import { API_ENDPOINT } from "../../store/store";
+import {  FINAL_HOST } from "../../store/store";
 import { get } from "svelte/store";
 import Comment from "../../components/comment.svelte";
 import { nFormatter } from "../../store/utils/functions";
@@ -200,7 +208,7 @@ export let continuation:string;
 let collapsed = true;
 
 const loadMoreComments = () => {
-    let url = `/proxy/${get(API_ENDPOINT)}/api/v1/comments/${video_data.videoId}`;
+    let url = `${get(FINAL_HOST)}/api/v1/comments/${video_data.videoId}`;
 
     !!continuation ? url += `?continuation=${continuation}` : ''
     

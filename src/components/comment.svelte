@@ -38,7 +38,7 @@
 import type {TypeComment} from "src/interfaces/Comments";
 
 import { get } from "svelte/store";
-import { API_ENDPOINT } from "../store/store";
+import { FINAL_HOST } from "../store/store";
 import SingleComment from "./singleComment.svelte";
 
 export let comment:TypeComment; // passed comment object
@@ -60,7 +60,7 @@ const showReplies = () => {
 
 // fetch next set of replies using nextPage object
 const loadmore = () => {
-    let url = `/proxy/${get(API_ENDPOINT)}/api/v1/comments/${videoId}`;
+    let url = `${get(FINAL_HOST)}/api/v1/comments/${videoId}`;
 
     !!repliesDataNext ? url += `?continuation=${repliesDataNext}` : ''
     
