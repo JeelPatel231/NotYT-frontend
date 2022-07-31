@@ -17,34 +17,41 @@
     </video>
 
     <div class="description text-body2">
-            <div class="mt-16 text-headline6">
-                {video_data.title}
-            </div>
-            <div class="flex">
-                <div class="views mt-16" class:collapsed={collapsed}>
-                    <div class="video-info">
-                        {video_data.viewCount.toLocaleString('en-US')} views
-                        •
-                        {video_data.publishedText}
-                    </div>
-                    <div class="desc-text">
-                        {@html video_data.descriptionHtml}
-                    </div>
-                </div>
-                <div class="button-bar mt-16">
-                    <div class="like btn">
-                        <span class="material-icons">thumb_up</span>
-                        <span>{nFormatter(video_data.likeCount)}</span>
-                    </div>
-                    <div class="share btn">
-                        <span class="material-icons" style="transform: scaleX(-1);">reply</span>
-                        <span>Share</span>
-                    </div>
+        <div class="mt-16 text-headline6">
+            {video_data.title}
+        </div>
+        <div class="flex-items-center">
+            <div class="views">
+                <div class="video-info">
+                    {video_data.viewCount.toLocaleString('en-US')} views
+                    •
+                    {new Date(video_data.published*1000).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric' })}
                 </div>
             </div>
-            <div class="show-more" on:click={()=>{collapsed = !collapsed}}>{collapsed ? "SHOW MORE" : "SHOW LESS"}</div>
+            <div class="button-bar">
+                <div class="like btn">
+                    <span class="material-icons">thumb_up</span>
+                    <span>{nFormatter(video_data.likeCount)}</span>
+                </div>
+                <div class="share btn">
+                    <span class="material-icons" style="transform: scaleX(-1);">reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+        </div>
+        <span class="divider" />
+        <div class="channel-info flex-items-center">
+            <img class="desc-channel-img" src={video_data.authorThumbnails.at(1)?.url} alt={video_data.author}>
+            <div>
+                <div class="text-body1 author-title">{video_data.author}</div>
+                <div class="author-subcount text-caption">{video_data.subCountText} subscribers</div>
+            </div>
+        </div>
+        <div class="desc-text" class:collapsed={collapsed}>
+            {@html video_data.descriptionHtml}
+        </div>
+        <div class="show-more" on:click={()=>{collapsed = !collapsed}}>{collapsed ? "SHOW MORE" : "SHOW LESS"}</div>
     </div>
-
     <div class="related-items">
         {#each video_data.recommendedVideos as entry}
             <SingleRelatedItem {...entry} />
@@ -53,6 +60,7 @@
 
     {#if !comments_data.error}
     <div class="comments">
+        <span class="divider" />
         {#each comments_data.comments as comment}
             <Comment comment={comment} videoId={comments_data.videoId}/>
         {/each}
@@ -100,14 +108,13 @@
     margin-top: 16px;
 }
 .views .video-info{
-    font-weight: 600;
-    margin-bottom: 8px;
+    color: #606060;
 }
 .related-items{
     grid-area: related;
 }
 .description{
-    margin-bottom: 18px;
+    margin-bottom: 8px;
     grid-area: description;
 }
 
@@ -115,8 +122,24 @@
     white-space: pre-line;
     word-break: break-word;
     line-height: 20px;
+    margin-left: 66px;
 }
-
+.channel-info{
+    margin: 16px 0;
+}
+.desc-channel-img{
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    margin-right: 16px;
+}
+.author-title{
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.author-subcount{
+    color: #606060;
+}
 :global(.description a){
     color: #065fd4;
 }
@@ -124,10 +147,7 @@
 .comments{
     grid-area: comments;
 }
-.flex{
-    display: flex;
-}
-.flex .views{
+.desc-text{
     display: flex;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -136,7 +156,7 @@
     flex-grow: 1;
 }
 
-.flex .views.collapsed{
+.desc-text.collapsed{
     -webkit-line-clamp: 3;
 }
 
@@ -144,13 +164,14 @@
     text-transform: uppercase;
     font-weight: 700;
     cursor:pointer;
-    margin-top: 8px;
+    margin:8px 0 0 66px;
 }
 
 .button-bar{
-    min-width: 250px;
     display: flex;
     align-self: flex-start;
+    margin-left: auto;
+    color: #606060;
 }
 .button-bar .btn{
     display: flex;
@@ -165,11 +186,6 @@
 .button-bar .material-icons{
     font-size: 24px;
     margin: 8px;
-}
-@media only screen and (max-width: 700px) {
-    .flex{
-        flex-direction: column-reverse;
-    }
 }
 </style>
 
