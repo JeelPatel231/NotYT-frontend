@@ -4,7 +4,7 @@
     <video class="videoplayer" controls>
 
         <!-- merged video and audio streams -->
-        {#each video_data.formatStreams as streams}
+        {#each video_data.formatStreams.reverse() as streams}
             <source src={streams.url} type={streams.type} label={streams.qualityLabel} >
         {/each}
 
