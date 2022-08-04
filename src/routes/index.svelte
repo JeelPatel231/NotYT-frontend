@@ -1,6 +1,6 @@
 <form action="/results" method="get">
     <label>SEARCH
-        <input type="text" id="fname" name="search_query"><br><br>
+        <input type="text" name="search_query"><br><br>
     </label>
     <input type="submit" value="Submit">
 </form>
