@@ -1,7 +1,7 @@
 <a href={`/watch?v=${data.videoId}`}>
 <div class="card m-t-8">
     <div class="thumb-wrapper">
-        <img src={`/images/${data.videoId}`} alt={data.title} class="thumbnail">
+        <img src={`/proxy/images/${data.videoId}`} alt={data.title} class="thumbnail">
     </div>
     <div class="content">
         <div class="video-title">

@@ -1,7 +1,7 @@
 <a href={`/watch?v=${videoId}`}>
     <div class="related-item">
         <div class="thumbnail">
-            <img class="video-thumb" src={`/images/${videoId}`} alt={title}>
+            <img class="video-thumb" src={`/proxy/images/${videoId}`} alt={title}>
             <span class="duration text-caption">{durationConverter(lengthSeconds)}</span>
         </div>
         <div class="content">
