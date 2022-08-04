@@ -1,3 +1,6 @@
+<svelte:head>
+    <title>{video_data.title}</title>
+</svelte:head>
 <!-- re-render everything on ID change -->
 {#key video_data.videoId}        
 <div class="grid-container">

@@ -1,3 +1,6 @@
+<svelte:head>
+    <title>{searchTerm} - NotYoutube</title>
+</svelte:head>
 <div>
     {#each data as item}
         <SearchResults data={item} />
@@ -11,7 +14,8 @@ export const load = async ({ fetch, url }) => {
     if(res.ok){
         return{
             props:{
-                data
+                data,
+                searchTerm: url.searchParams.get("search_query")
             }
         }
     } else {
@@ -30,7 +34,7 @@ import type { TypeSearchedChannel, TypeSearchedPlaylist, TypeSearchedVideo } fro
 import SearchResults from "../../components/SearchResults.svelte"
 
 export let data:(TypeSearchedVideo|TypeSearchedChannel|TypeSearchedPlaylist)[];
-
+export let searchTerm:string = undefined;
 
 // JS FN FOR LOADING MORE, OR NEXT PAGE URL FOR NEXT PAGE
 </script>
