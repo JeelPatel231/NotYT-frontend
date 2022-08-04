@@ -34,7 +34,7 @@ import type { TypeSearchedChannel, TypeSearchedPlaylist, TypeSearchedVideo } fro
 import SearchResults from "../../components/SearchResults.svelte"
 
 export let data:(TypeSearchedVideo|TypeSearchedChannel|TypeSearchedPlaylist)[];
-export let searchTerm:string = undefined;
+export let searchTerm:string;
 
 // JS FN FOR LOADING MORE, OR NEXT PAGE URL FOR NEXT PAGE
 </script>
