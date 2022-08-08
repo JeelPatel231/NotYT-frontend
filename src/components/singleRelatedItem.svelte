@@ -30,11 +30,12 @@
 .thumbnail{
     position: relative;
     margin-right: 8px;
-    width: 172px;
+    height: 94px;
+    width: 168px;
 }
 .video-thumb{
-    height: 100%;
-    width: 172px;
+    height: 94px;
+    width: 168px;
 }
 .duration{
     position: absolute;

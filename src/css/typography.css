@@ -26,6 +26,12 @@
   font-size: 20px;
   letter-spacing: 0.15px;
 }
+/* custom 18px */
+.text-regular{
+  font-family: "Roboto";
+  font-size: 18px;
+  letter-spacing: 0.15px;
+}
 .text-body1{
   font-family: "Roboto";
   font-size: 16px;

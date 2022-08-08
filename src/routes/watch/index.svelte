@@ -20,10 +20,10 @@
     </video>
 
     <div class="description text-body2">
-        <div class="mt-16 text-headline6">
+        <div class="mt-18 text-regular">
             {video_data.title}
         </div>
-        <div class="flex-items-center">
+        <div class="flex-items-center mb-8">
             <div class="views">
                 <div class="video-info">
                     {video_data.viewCount.toLocaleString('en-US')} views
@@ -46,14 +46,18 @@
         <div class="channel-info flex-items-center">
             <img class="desc-channel-img" src={video_data.authorThumbnails.at(1)?.url} alt={video_data.author}>
             <div>
-                <div class="text-body1 author-title">{video_data.author}</div>
+                <div class="text-body2 author-title">{video_data.author}</div>
                 <div class="author-subcount text-caption">{video_data.subCountText} subscribers</div>
+            </div>
+            <!-- BUTTON DOESNT DO ANYTHING YET -->
+            <div class="subscribe">
+                SUBSCRIBE
             </div>
         </div>
         <div class="desc-text" class:collapsed={collapsed}>
             {@html video_data.descriptionHtml}
         </div>
-        <div class="show-more" on:click={()=>{collapsed = !collapsed}}>{collapsed ? "SHOW MORE" : "SHOW LESS"}</div>
+        <div class="show-more text-caption" on:click={()=>{collapsed = !collapsed}}>{collapsed ? "SHOW MORE" : "SHOW LESS"}</div>
     </div>
     <div class="related-items">
         {#each video_data.recommendedVideos as entry}
@@ -64,6 +68,11 @@
     {#if !comments_data.error}
     <div class="comments">
         <span class="divider" />
+
+        <div class="comment-count text-body1">
+            {comments_data.commentCount} Comments
+        </div>
+
         {#each comments_data.comments as comment}
             <Comment comment={comment} videoId={comments_data.videoId}/>
         {/each}
@@ -107,8 +116,8 @@
     max-height: 800px;
 }
 
-.mt-16{
-    margin-top: 16px;
+.mt-18{
+    margin-top: 18px;
 }
 .views .video-info{
     color: #606060;
@@ -117,7 +126,7 @@
     grid-area: related;
 }
 .description{
-    margin-bottom: 8px;
+    margin-bottom: 18px;
     grid-area: description;
 }
 
@@ -150,6 +159,10 @@
 .comments{
     grid-area: comments;
 }
+.comment-count{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
 .desc-text{
     display: flex;
     -webkit-box-orient: vertical;
@@ -163,11 +176,20 @@
     -webkit-line-clamp: 3;
 }
 
+.subscribe{
+    background-color: #cc0000;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 16px;
+    margin-left: auto;
+}
+
 .show-more{
     text-transform: uppercase;
     font-weight: 700;
     cursor:pointer;
     margin:8px 0 0 66px;
+    color: #606060;
 }
 
 .button-bar{
