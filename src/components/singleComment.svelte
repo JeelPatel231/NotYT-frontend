@@ -80,6 +80,7 @@ onMount(()=>{
 .commentText{
     white-space: pre-line;
     margin:4px 0;
+    line-height: 1.8rem;
 }
 .commentBar{
     display: flex;
