@@ -16,19 +16,14 @@
         <span class="material-icons hamburger p-8">more_vert</span>
     </div>
 </div>
-<span class="nav-padding" />
 
 <style>
 .navbar{
-    position: fixed;
+    position: sticky;
     width: 100%;
     background-color: #fffffff8;
     z-index: 1;
     top: 0;
-}
-.nav-padding{
-    display: block;
-    margin-top: 56px;
 }
 .loading{
     height: 2px;
