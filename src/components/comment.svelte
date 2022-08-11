@@ -27,7 +27,7 @@
         {/each}
         <!-- load button is more replies exist -->
         {#if !!repliesDataNext}
-            <div on:click={loadmore}>Show More</div>
+            <div class="show-more-replies" on:click={loadmore}>Show More</div>
         {/if}
     </div>
     <span class="seperatorbar" />
@@ -79,7 +79,17 @@ const loadmore = () => {
 .showreplies{
     margin-left:56px;
     color: #065fd4;
+    font-weight: 500;
+    cursor: pointer;
+}
+.show-more-replies{
     font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #606060;
+    cursor: pointer;
+    margin-left: 55px;
+    margin-top: 8px;
 }
 .showreplies .material-icons{
     font-size: 24px;

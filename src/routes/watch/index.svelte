@@ -146,7 +146,7 @@
     margin-right: 16px;
 }
 .author-title{
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 4px;
 }
 .author-subcount{

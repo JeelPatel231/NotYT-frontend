@@ -66,7 +66,7 @@ onMount(()=>{
 .uploaderName{
     line-height: 1.8rem;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.015rem;
     max-width: 0; /*prevents grid overflow*/
     white-space: pre;
@@ -75,7 +75,7 @@ onMount(()=>{
     font-size: 1rem;
     color:#606060;
     margin-left: 8px;
-    font-weight: 100;
+    font-weight: 400;
 }
 .commentText{
     white-space: pre-line;
