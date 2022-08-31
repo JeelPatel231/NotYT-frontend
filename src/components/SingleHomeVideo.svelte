@@ -32,7 +32,8 @@
 }
 .image-container{
     position: relative;
-    width: fit-content;
+    width: 320px;
+    height: 180px;
 }
 .title{
     margin: 12px 0 6px 0;
