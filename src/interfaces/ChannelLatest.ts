@@ -21,5 +21,4 @@ export default interface ChannelLatest {
   lengthSeconds: number;
   paid: boolean;
   premium: boolean;
-}
-[];
+};
