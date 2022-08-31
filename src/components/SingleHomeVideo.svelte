@@ -38,16 +38,6 @@
     margin: 12px 0 6px 0;
     font-weight: 500;
 }
-.duration{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 4px;
-    margin: 8px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border-radius: 2px;
-}
 .info{
     color: #606060;
     line-height: 1.8rem;

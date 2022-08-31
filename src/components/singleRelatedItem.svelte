@@ -37,16 +37,6 @@
     height: 94px;
     width: 168px;
 }
-.duration{
-    position: absolute;
-    margin: 8px 4px;
-    padding: 4px;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border-radius: 2px;
-}
 .content{
     display: flex;
     flex-direction: column;
