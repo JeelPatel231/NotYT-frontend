@@ -1,19 +1,21 @@
 <div class="video-container">
     {#each data as entry}
-    <div class="video-card">
-        <div class="thumbnail text-body2">
-            <img src={`/proxy/images/${entry.videoId}`} alt={entry.title}>
-            <div class="duration">
-                {durationConverter(entry.lengthSeconds)}
+    <a href={`/watch?v=${entry.videoId}`}>
+        <div class="video-card">
+            <div class="thumbnail text-body2">
+                <img src={`/proxy/images/${entry.videoId}`} alt={entry.title}>
+                <div class="duration">
+                    {durationConverter(entry.lengthSeconds)}
+                </div>
+            </div>
+            <div class="title text-body2">
+                {entry.title}
+            </div>
+            <div class="text-caption">
+                {entry.viewCount} • {entry.publishedText} 
             </div>
         </div>
-        <div class="title text-body2">
-            {entry.title}
-        </div>
-        <div class="text-caption">
-            {entry.viewCount} • {entry.publishedText} 
-        </div>
-    </div>
+    </a>
     {/each}
 </div>
     
