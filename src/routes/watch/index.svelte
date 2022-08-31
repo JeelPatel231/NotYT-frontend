@@ -46,7 +46,7 @@
         <div class="channel-info flex-items-center">
             <img class="desc-channel-img" src={video_data.authorThumbnails.at(1)?.url} alt={video_data.author}>
             <div>
-                <div class="text-body2 author-title">{video_data.author}</div>
+                <a href={video_data.authorUrl} class="text-body2 author-title">{video_data.author}</a>
                 <div class="author-subcount text-caption">{video_data.subCountText} subscribers</div>
             </div>
             <!-- BUTTON DOESNT DO ANYTHING YET -->
@@ -148,6 +148,7 @@
 .author-title{
     font-weight: 500;
     margin-bottom: 4px;
+    color: #000;
 }
 .author-subcount{
     color: #606060;
