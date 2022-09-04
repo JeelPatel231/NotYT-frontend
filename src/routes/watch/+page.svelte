@@ -1,19 +1,19 @@
 <svelte:head>
-    <title>{video_data.title}</title>
+    <title>{data.video_data.title}</title>
 </svelte:head>
 <!-- re-render everything on ID change -->
-{#key video_data.videoId}        
+{#key data.video_data.videoId}        
 <div class="grid-container">
     <video class="videoplayer" controls>
 
         <!-- merged video and audio streams -->
-        {#each video_data.formatStreams.reverse() as streams}
+        {#each data.video_data.formatStreams.reverse() as streams}
             <source src={streams.url} type={streams.type} label={streams.qualityLabel} >
         {/each}
 
         <!-- proxy fallbacks -->
-        <source src={`${$FINAL_HOST}/latest_version?id=${video_data.videoId}&itag=22&local=true`} >
-        <source src={`${$FINAL_HOST}/latest_version?id=${video_data.videoId}&itag=18&local=true`} >
+        <source src={`${$FINAL_HOST}/latest_version?id=${data.video_data.videoId}&itag=22&local=true`} >
+        <source src={`${$FINAL_HOST}/latest_version?id=${data.video_data.videoId}&itag=18&local=true`} >
 
         <!-- track here just for "good practices" and svelte warning -->
         <track kind="captions">
@@ -21,20 +21,20 @@
 
     <div class="description text-body2">
         <div class="mt-18 text-regular">
-            {video_data.title}
+            {data.video_data.title}
         </div>
         <div class="flex-items-center mb-8">
             <div class="views">
                 <div class="video-info">
-                    {video_data.viewCount.toLocaleString('en-US')} views
+                    {data.video_data.viewCount.toLocaleString('en-US')} views
                     •
-                    {new Date(video_data.published*1000).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric' })}
+                    {new Date(data.video_data.published*1000).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric' })}
                 </div>
             </div>
             <div class="button-bar">
                 <div class="like btn">
                     <span class="material-icons">thumb_up</span>
-                    <span>{nFormatter(video_data.likeCount)}</span>
+                    <span>{nFormatter(data.video_data.likeCount)}</span>
                 </div>
                 <div class="share btn">
                     <span class="material-icons" style="transform: scaleX(-1);">reply</span>
@@ -44,10 +44,10 @@
         </div>
         <span class="divider" />
         <div class="channel-info flex-items-center">
-            <img class="desc-channel-img" src={video_data.authorThumbnails.at(1)?.url} alt={video_data.author}>
+            <img class="desc-channel-img" src={data.video_data.authorThumbnails.at(1)?.url} alt={data.video_data.author}>
             <div>
-                <a href={video_data.authorUrl} class="text-body2 author-title">{video_data.author}</a>
-                <div class="author-subcount text-caption">{video_data.subCountText} subscribers</div>
+                <a href={data.video_data.authorUrl} class="text-body2 author-title">{data.video_data.author}</a>
+                <div class="author-subcount text-caption">{data.video_data.subCountText} subscribers</div>
             </div>
             <!-- BUTTON DOESNT DO ANYTHING YET -->
             <div class="subscribe">
@@ -55,30 +55,30 @@
             </div>
         </div>
         <div class="desc-text" class:collapsed={collapsed}>
-            {@html video_data.descriptionHtml}
+            {@html data.video_data.descriptionHtml}
         </div>
         <div class="show-more text-caption" on:click={()=>{collapsed = !collapsed}}>{collapsed ? "SHOW MORE" : "SHOW LESS"}</div>
     </div>
     <div class="related-items">
-        {#each video_data.recommendedVideos as entry}
+        {#each data.video_data.recommendedVideos as entry}
             <SingleRelatedItem {...entry} />
         {/each}
     </div>
 
-    {#if !comments_data.error}
+    {#if !data.comments_data.error}
     <div class="comments">
         <span class="divider" />
 
         <div class="comment-count text-body1">
-            {comments_data.commentCount} Comments
+            {data.comments_data.commentCount} Comments
         </div>
 
-        {#each comments_data.comments as comment}
-            <Comment comment={comment} videoId={comments_data.videoId}/>
+        {#each data.comments_data.comments as comment}
+            <Comment comment={comment} videoId={data.comments_data.videoId}/>
         {/each}
         
         <!-- load button if more replies exist  -->
-        {#if !!continuation}
+        {#if !!data.continuation}
             <div on:click={loadMoreComments}>Load More</div>
         {/if}
     </div>
@@ -215,49 +215,31 @@
 }
 </style>
 
-<script context="module">
-export const load = async ({ fetch, url }) => {
-    const videoId = url.searchParams.get('v')
-    const video_res = await fetch(`${get(FINAL_HOST)}/api/v1/videos/${videoId}`);
-    const comments_res = await fetch(`${get(FINAL_HOST)}/api/v1/comments/${videoId}`);
-
-    const video_data = await video_res.json();
-    const comments_data = await comments_res.json();
-    
-
-    return{
-        props:{
-            video_data,
-            comments_data,
-            continuation: comments_data.continuation,
-        }
-    }
-}
-</script>
-
 <script lang="ts">
-import {  FINAL_HOST } from "../../store/store";
 import { get } from "svelte/store";
+import { FINAL_HOST } from "../../store/store";
 import Comment from "../../components/comment.svelte";
 import { nFormatter } from "../../store/utils/functions";
 import SingleRelatedItem from "../../components/singleRelatedItem.svelte";
 import type Video from "src/interfaces/Videos";
 import type {TypeVideoComments} from "src/interfaces/Comments";
 
-export let video_data:Video;
-export let comments_data:TypeVideoComments;
-export let continuation:string;
+export let data:{
+    video_data:Video,
+    comments_data:TypeVideoComments,
+    continuation:string,
+}
 let collapsed = true;
 
 const loadMoreComments = () => {
-    let url = `${get(FINAL_HOST)}/api/v1/comments/${video_data.videoId}`;
+    let url = `${get(FINAL_HOST)}/api/v1/comments/${data.video_data.videoId}`;
 
-    !!continuation ? url += `?continuation=${continuation}` : ''
+    !!data.continuation ? url += `?continuation=${data.continuation}` : ''
     
     fetch(url).then(x=>x.json())
     .then(x=>{
-        comments_data.comments = [...comments_data.comments,...x.comments]
-        continuation = x.continuation
+        data.comments_data.comments = [...data.comments_data.comments,...x.comments]
+        data.continuation = x.continuation
     })
 }
 
