@@ -78,7 +78,7 @@ const loadmore = () => {
 }
 .showreplies{
     margin-left:56px;
-    color: #065fd4;
+    color: var(--blue);
     font-weight: 500;
     cursor: pointer;
 }
@@ -86,7 +86,7 @@ const loadmore = () => {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.2rem;
-    color: #606060;
+    color: var(--subtitle-text);
     cursor: pointer;
     margin-left: 55px;
     margin-top: 8px;

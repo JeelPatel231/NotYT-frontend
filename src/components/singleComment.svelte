@@ -73,7 +73,7 @@ onMount(()=>{
 }
 .upload-date{
     font-size: 1rem;
-    color:#606060;
+    color:var(--subtitle-text);
     margin-left: 8px;
     font-weight: 400;
 }

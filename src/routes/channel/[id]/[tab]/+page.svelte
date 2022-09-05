@@ -44,7 +44,7 @@
     margin-bottom: 4px;
 }
 .sub-count{
-    color: #606060;
+    color: var(--subtitle-text);
 }
 .thumbnail{
     height: 80px;
@@ -58,7 +58,7 @@
     padding: 0 30px;
 }
 .tab-item.active{
-    border-bottom: 3px solid #606060;
+    border-bottom: 3px solid var(--subtitle-text);
 }
 </style>
 

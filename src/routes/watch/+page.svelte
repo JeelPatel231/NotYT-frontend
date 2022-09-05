@@ -120,7 +120,7 @@
     margin-top: 18px;
 }
 .views .video-info{
-    color: #606060;
+    color: var(--subtitle-text);
 }
 .related-items{
     grid-area: related;
@@ -148,13 +148,13 @@
 .author-title{
     font-weight: 500;
     margin-bottom: 4px;
-    color: #000;
+    color: var(--bg-invert);
 }
 .author-subcount{
-    color: #606060;
+    color: var(--subtitle-text);
 }
 :global(.description a){
-    color: #065fd4;
+    color: var(--blue);
 }
 
 .comments{
@@ -178,8 +178,8 @@
 }
 
 .subscribe{
-    background-color: #cc0000;
-    color: #fff;
+    background-color: var(--red);
+    color: #fff; /*leave it hardcoded */
     font-weight: bold;
     padding: 10px 16px;
     margin-left: auto;
@@ -190,14 +190,14 @@
     font-weight: 700;
     cursor:pointer;
     margin:8px 0 0 66px;
-    color: #606060;
+    color: var(--subtitle-text);
 }
 
 .button-bar{
     display: flex;
     align-self: flex-start;
     margin-left: auto;
-    color: #606060;
+    color: var(--subtitle-text);
 }
 .button-bar .btn{
     display: flex;

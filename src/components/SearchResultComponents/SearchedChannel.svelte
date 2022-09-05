@@ -42,14 +42,14 @@
     display: flex;
     flex-direction: column;
     padding-left: 16px;
-    color: #606060;
+    color: var(--subtitle-text);
     font-size: 1.2rem;
 }
 .m-t-8{
     margin-top: 8px;
 }
 .video-title{
-    color: #000000;
+    color: var(--bg-invert);
     font-size: 1.8rem;
 }
 .channel{

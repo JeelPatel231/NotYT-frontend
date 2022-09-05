@@ -6,6 +6,8 @@ export const API_ENDPOINT:Writable<string> = writable("https://tube.nocturn9x.sp
 export const useProxy:Writable<boolean> = writable(false)
 // final host variable to change between proxy / non-proxy server
 export const FINAL_HOST:Writable<string> = writable(get(API_ENDPOINT))
+// dark theme boolean for toggle
+export const IS_DARK_THEME:Writable<boolean> = writable(true)
 
 const urlSntzr = (url:string) => { // input any link with path and search params
     return new URL(url).origin // output -> protocol://host:port

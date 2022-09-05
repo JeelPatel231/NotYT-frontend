@@ -9,6 +9,7 @@
 import "../css/global.css"
 import "../css/typography.css"
 import "../css/utility.css"
+import "../css/colors.css"
 
 import Navbar from "../components/Navbar.svelte";
 </script>

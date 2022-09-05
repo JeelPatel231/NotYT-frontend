@@ -47,14 +47,14 @@
     display: flex;
     flex-direction: column;
     padding-left: 16px;
-    color: #606060;
+    color: var(--subtitle-text);
     font-size: 1.2rem;
 }
 .m-t-8{
     margin-top: 8px;
 }
 .video-title{
-    color: #000000;
+    color: var(--bg-invert);
     font-size: 1.8rem;
 }
 .channel-info{
@@ -65,12 +65,12 @@
     content: "check";
     font-family: "Material Icons";
     margin-left: 4px;
-    background: #606060;
+    background: var(--subtitle-text);
     border-radius: 100px;
     padding: 2px;
     font-size: 8px;
     font-weight: bold;
-    color: #fff;
+    color: var(--background);
 }
 
 @media only screen and (max-width:700px){

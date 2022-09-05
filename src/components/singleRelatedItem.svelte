@@ -56,10 +56,10 @@
     overflow: hidden;
 }
 .channel-name:hover{
-    color: #000;
+    color: var(--bg-invert);
 }
 .info{
-    color: #666;
+    color: var(--subtitle-text);
     margin-bottom: 2px;
 }
 </style>

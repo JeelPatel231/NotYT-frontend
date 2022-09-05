@@ -40,7 +40,7 @@
     font-weight: 500;
 }
 .info{
-    color: #606060;
+    color: var(--subtitle-text);
     line-height: 1.8rem;
 }
 </style>

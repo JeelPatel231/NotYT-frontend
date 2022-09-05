@@ -1,0 +1,39 @@
+:root{
+    --red:#cc0000;
+}
+
+.light-theme{
+    --background: #fff;
+    
+    --blue: #065fd4;
+    
+    --translucent-bg:#fffffff8;
+    
+    --bg-invert:#000; 
+    --gray:#666;
+
+    /* --subtitle-text:#ffffffcc; */
+    --subtitle-text:#000000cc;
+}
+
+.dark-theme{
+    --background: #121212;
+    
+    --blue: #3EA6FF;
+
+    --translucent-bg:#121212f8;
+    
+    --bg-invert:#fff; 
+    --gray:#666;
+    
+    /* --subtitle-text:#000000cc; */
+    --subtitle-text:#ffffffcc;
+}
+
+body{
+    color:var(--bg-invert);
+    background-color: var(--background);
+}
+
+/* TODO : @media (prefers-color-scheme: dark) */
+/* TODO : @media (prefers-color-scheme: light) */
