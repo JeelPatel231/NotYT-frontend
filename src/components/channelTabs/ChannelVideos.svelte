@@ -54,7 +54,7 @@
 </style>
 
 <script lang="ts">
-import type ChannelLatest from "src/interfaces/ChannelLatest";
+import type TypeChannelLatest from "src/interfaces/ChannelLatest";
 import { durationConverter } from "../../store/utils/functions";
-export let data: ChannelLatest[];
+export let data: TypeChannelLatest[];
 </script>

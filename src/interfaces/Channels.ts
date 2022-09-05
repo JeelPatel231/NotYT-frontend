@@ -1,4 +1,4 @@
-export default interface Channels {
+export default interface TypeChannel {
   author: string;
   authorId: string;
   authorUrl: string;

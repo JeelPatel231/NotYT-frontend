@@ -64,18 +64,27 @@
 
 <script lang="ts">
 import { nFormatter } from "../../../../store/utils/functions";
-import type Channels from "../../../../interfaces/Channels"
+import type TypeChannel from "../../../../interfaces/Channels"
 import ChannelVideos from "../../../../components/channelTabs/ChannelVideos.svelte";
 import ChannelComments from "../../../../components/channelTabs/ChannelComments.svelte";
 import ChannelPlaylists from "../../../../components/channelTabs/ChannelPlaylists.svelte";
 import ChannelAbout from "../../../../components/channelTabs/ChannelAbout.svelte";
 
+import type TypeChannelComments from "src/interfaces/ChannelComments";
+import type TypeChannelPlaylist from "src/interfaces/ChannelPlaylist";
+import type TypeChannelLatest from "src/interfaces/ChannelLatest";
+
+import type { SvelteComponent} from "svelte";
+
 export let data:{
-    channel_data:Channels;
+    channel_data:TypeChannel;
     activeTab:string;
-    tab_data;
+    tab_data:(TypeChannelPlaylist[]|TypeChannelComments[]|TypeChannel|TypeChannelLatest[]);
 }
-const channelTabs = {
+
+const channelTabs:{
+    [key:string]:typeof SvelteComponent
+} = {
     "latest": ChannelVideos,
     "videos": ChannelVideos,
     "comments": ChannelComments,

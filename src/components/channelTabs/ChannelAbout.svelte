@@ -57,6 +57,6 @@
 </style>
 
 <script lang="ts">
-import type Channels from "src/interfaces/Channels";
-export let data:Channels;
+import type TypeChannel from "src/interfaces/Channels";
+export let data:TypeChannel;
 </script>

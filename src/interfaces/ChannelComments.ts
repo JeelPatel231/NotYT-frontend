@@ -1,4 +1,4 @@
-export default interface ChannelComments {
+export default interface TypeChannelComments {
   authorId: string;
   comments: [
     {

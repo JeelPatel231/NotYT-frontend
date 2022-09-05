@@ -1,5 +1,6 @@
 {JSON.stringify(data)}
 
-<script>
-export let data;
+<script lang="ts">
+import type TypeChannelPlaylist from "src/interfaces/ChannelPlaylist";
+export let data:TypeChannelPlaylist[];
 </script>

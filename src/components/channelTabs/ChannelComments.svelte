@@ -1,5 +1,6 @@
 {JSON.stringify(data)}
 
-<script>
-export let data;
+<script lang="ts">
+import type TypeChannelComments from "src/interfaces/ChannelComments";
+export let data:TypeChannelComments[];
 </script>

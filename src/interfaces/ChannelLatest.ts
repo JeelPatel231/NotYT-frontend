@@ -1,4 +1,4 @@
-export default interface ChannelLatest {
+export default interface TypeChannelLatest {
   title: string;
   videoId: string;
   authorId: string;

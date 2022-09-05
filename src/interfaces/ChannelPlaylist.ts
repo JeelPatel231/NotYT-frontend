@@ -1,4 +1,4 @@
-export default interface ChannelPlaylist {
+export default interface TypeChannelPlaylist {
   playlists: {
     title: string;
     playlistId: string;
