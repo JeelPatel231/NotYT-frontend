@@ -49,6 +49,7 @@
     max-width: 644px;
     flex-grow: 1;
     margin: 0 16px;
+    margin-left: auto;
 }
 .search-bar form{
     display: flex;
