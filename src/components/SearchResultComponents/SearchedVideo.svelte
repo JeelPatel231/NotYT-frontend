@@ -2,6 +2,7 @@
 <div class="card m-t-8">
     <div class="thumb-wrapper">
         <img src={`/proxy/images/${data.videoId}`} alt={data.title} class="thumbnail">
+        <div class="duration">{durationConverter(data.lengthSeconds)}</div>
     </div>
     <div class="content">
         <div class="video-title">
@@ -42,6 +43,9 @@
     max-height: 202px;
     display: flex;
     justify-content: center;
+
+    position: relative;
+    font-size: 1.4rem;
 }
 .content{
     display: flex;
@@ -91,6 +95,7 @@
 
 <script lang="ts">
 import type { TypeSearchedVideo } from "src/interfaces/Search";
+import { durationConverter } from "../../store/utils/functions";
 export let data:TypeSearchedVideo;
 
 </script>
