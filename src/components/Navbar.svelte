@@ -83,6 +83,7 @@
 } */
 .right-container{
     margin-left: auto;
+    display: flex;
 }
 </style>
 
