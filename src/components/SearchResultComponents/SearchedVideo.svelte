@@ -26,7 +26,6 @@
 
 <style>
 .card{
-    max-width: 1096px;
     display:grid;
     grid-template-columns: 360px minmax(200px,auto);
 }
