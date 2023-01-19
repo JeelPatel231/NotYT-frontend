@@ -1,6 +1,6 @@
 // MOVE TO VIDEOS TAB WHEN SURFING CHANNEL AS DEFAULT
-import { redirect } from '@sveltejs/kit';
+import { redirect, type RequestHandler } from '@sveltejs/kit';
 
-export async function GET({params}) {
+export const GET:RequestHandler = async ({params}) => {
     throw redirect(302,`${params.id}/latest`)
 }

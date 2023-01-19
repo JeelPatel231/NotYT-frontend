@@ -1,5 +1,7 @@
+import type { RequestHandler } from "@sveltejs/kit";
+
 // A SIMPLE PROXY TO AVOID CORS AND ALSO USE CORS-LESS SERVERS WITHOUT PAIN
-export const GET = async ({url}) => {
+export const GET:RequestHandler = async ({url}) => {
     // assigning url.host just doesnt work, i have tried it
     console.log(url.href)
     let INVIDIOUS_ENDPOINT:string = url.href.replace(`${url.protocol}//${url.host}/proxy/`,'');

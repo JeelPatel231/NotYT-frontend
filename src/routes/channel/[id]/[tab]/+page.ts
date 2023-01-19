@@ -1,7 +1,8 @@
 import { FINAL_HOST } from "../../../../store/store";
 import { get } from "svelte/store";
+import type { PageLoad } from "./$types";
 
-export const load = async ({ fetch, params }) => {
+export const load:PageLoad = async ({ fetch, params }) => {
     const channel_res = await fetch(`${get(FINAL_HOST)}/api/v1/channels/${params.id}`);
     const channel_data = await channel_res.json();
     let tab_data = undefined;
