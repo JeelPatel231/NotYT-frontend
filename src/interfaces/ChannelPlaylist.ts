@@ -1,5 +1,8 @@
 export default interface TypeChannelPlaylist {
   playlists: {
+    type: "playlist",
+    playlistThumbnail: string,
+    authorVerified: boolean,
     title: string;
     playlistId: string;
     author: string;
